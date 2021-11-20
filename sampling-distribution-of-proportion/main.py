@@ -45,8 +45,9 @@ class SampleProportion( Scene ):
         min_pop_padding = 0.1 * pop_radius
         population = VGroup()
 
-        pop_coords_file_name = "n_" + str( n ) + "_p_" + str( round( 100 * p ) ).rstrip( '0' ).rstrip(
-            '.' ) + "_pop_values.csv"
+        pop_coords_file_name = os.path.join( "data",
+                                             "n_" + str( n ) + "_p_" + str( round( 100 * p ) ).rstrip( '0' ).rstrip(
+                                                 '.' ) + "_pop_values.csv" )
         pop_coords_values = np.empty( [n, 3] )
         if not reuse_population or not os.path.isfile( pop_coords_file_name ):
             i = 0
@@ -229,8 +230,9 @@ class SampleProportion( Scene ):
             m = 300
             meta_sample_list = np.empty( [m, k], dtype='int' )
             p_hats = np.empty( m )
-            meta_sample_list_filename = "k_" + str( k ) + "_m_" + str( m ) + "_meta_sample_list.csv"
-            phats_filename = "k_" + str( k ) + "_m_" + str( m ) + "_phats.csv"
+            meta_sample_list_filename = os.path.join( "data",
+                                                      "k_" + str( k ) + "_m_" + str( m ) + "_meta_sample_list.csv" )
+            phats_filename = os.path.join( "data", "k_" + str( k ) + "_m_" + str( m ) + "_phats.csv" )
             if not reuse_samples or not reuse_population or not os.path.isfile( meta_sample_list_filename ):
                 for i in range( m ):
                     temp = sampling()
